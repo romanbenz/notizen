@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notes</title>
+    <link rel="stylesheet" href="css/default.css">
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="main-wrapper">
+            <main class="main-content">
+                <form id="note" name="note">
+                    <div class="row-detail">
+                        <label for="title" class="width-1">Title</label>
+                        <input type="text" id="title" name="title" class="width-3 input-text">
+                    </div>
+                    <div class="row-detail">
+                        <label for="description" class="width-1">Description</label>
+                        <textarea id="description" name="description" class="width-3 textarea" rows="5"></textarea>
+                    </div>
+                    <div class="row-detail">
+                        <label for="importance" class="width-1">Importance</label>
+                        <select id="importance" name="importance" class="width-1">
+                            <option value="1">*</option>
+                            <option value="2">**</option>
+                            <option value="3">***</option>
+                            <option value="4">****</option>
+                            <option value="5">*****</option>
+                        </select>
+                    </div>
+                    <div class="row-detail">
+                        <label for="dueBy" class="width-1">Due by</label>
+                        <input type="text" id="dueBy" name="dueBy" class="width-1 input-text">
+                    </div>
+                    <div class="row-detail">
+                        <button id="reset" name="reset" type="button" class="width-1 button">Reset</button>
+                        <button id="submit" name="submit" type="button" class="width-3 button">Submit</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+    <script>
+        $("#submit").on("click", function () {
+            //let formData = new FormData($("#note"));
+            //((formData = JSON.stringify(formData);
+            $.post("api/notes", $("#note").serialize(), function (data) {
+                //alert(JSON.stringify(data));
+
+                const notes = JSON.parse(sessionStorage.getItem("notes")) || [];
+                //const notes = [];
+                notes.push(data);
+                sessionStorage.setItem("notes", JSON.stringify(notes));
+                window.location.replace("index.html");
+
+            });
+        });
+    </script>
+</body>
+
+</html>
