@@ -24,11 +24,7 @@ body {
     padding: 10px 5px;
 }
 
-.row:nth-of-type(4n-3) {
-    background-color: whitesmoke;
-}
-
-.row:nth-of-type(4n-2) {
+.note:nth-of-type(2n-1) {
     background-color: whitesmoke;
 }
 

@@ -4,8 +4,7 @@
 <head>
     <title>Notes</title>
     <link rel="stylesheet" href="css/default.css">
-    <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.css">
 </head>
 
 <body>
@@ -13,6 +12,7 @@
         <div class="main-wrapper">
             <main class="main-content">
                 <form id="note" name="note">
+                    <input type="hidden" id="id" name="_id">
                     <div class="row-detail">
                         <label for="title" class="width-1">Title</label>
                         <input type="text" id="title" name="title" class="width-3 input-text">
@@ -43,22 +43,11 @@
             </main>
         </div>
     </div>
-    <script>
-        $("#submit").on("click", function () {
-            //let formData = new FormData($("#note"));
-            //((formData = JSON.stringify(formData);
-            $.post("api/notes", $("#note").serialize(), function (data) {
-                //alert(JSON.stringify(data));
 
-                const notes = JSON.parse(sessionStorage.getItem("notes")) || [];
-                //const notes = [];
-                notes.push(data);
-                sessionStorage.setItem("notes", JSON.stringify(notes));
-                window.location.replace("index.html");
-
-            });
-        });
-    </script>
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script type="module" src="js/detail.js"></script>
 </body>
 
 </html>

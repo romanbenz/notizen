@@ -4,70 +4,56 @@
 <head>
     <title>Notes</title>
     <link rel="stylesheet" href="css/default.css">
-    <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/jquery-3.3.1.js"></script>
 </head>
 
 <body>
     <div class="page-wrapper">
         <div class="main-wrapper">
             <main class="main-content">
-                <div class="row">
-                    <button type="button" class="width-1 button">Create new note</button>
-                    <div class="auto-width"></div>
-                    <select class="width-1">
-                        <option value="default">Default</option>
-                        <option value="fancy">Fancy</option>
-                    </select>
-                </div>
-                <div class="row">
-                    <button type="button" class="width-1 button">By finish date</button>
-                    <button type="button" class="width-1 button">By created date</button>
-                    <button type="button" class="width-1 button">By importance</button>
-                    <button type="button" class="width-1 button">Show finished</button>
-                </div>
-                <div class="row">
-                    <div class="width-1">Next Monday</div>
-                    <div class="width-2">Buy vacuum cleaner</div>
-                    <div class="width-1">Importance ***</div>
-
-                </div>
-                <div class="row">
-                    <div class="width-1">
-                        <input type="checkbox">Finished
+                <div class="tools">
+                    <div class="row">
+                        <button type="button" class="width-1 button" id="new-note">Create new note</button>
+                        <div class="auto-width"></div>
+                        <select class="width-1">
+                            <option value="default">Default</option>
+                            <option value="fancy">Fancy</option>
+                        </select>
                     </div>
-                    <textarea class="width-2 textarea textarea-list" rows="5" disabled></textarea>
-                    <button type="button" class="width-1 button">Edit</button>
-                </div>
-                <div class="row">
-                    <div class="width-1">Next Monday</div>
-                    <div class="width-2">Buy vacuum cleaner</div>
-                    <div class="width-1">Importance ***</div>
-
-                </div>
-                <div class="row">
-                    <div class="width-1">
-                        <input type="checkbox">Finished
+                    <div class="row">
+                        <button type="button" class="width-1 button" id="sort-by-due-date">By finish date</button>
+                        <button type="button" class="width-1 button" id="sort-by-created-date">By created date</button>
+                        <button type="button" class="width-1 button" id="sort-by-importance">By importance</button>
+                        <button type="button" class="width-1 button">Show finished</button>
                     </div>
-                    <textarea class="width-2 textarea textarea-list" rows="5" disabled></textarea>
-                    <button type="button" class="width-1 button">Edit</button>
                 </div>
-                <div class="row">
-                    <div class="width-1">Next Monday</div>
-                    <div class="width-2">Buy vacuum cleaner</div>
-                    <div class="width-1">Importance ***</div>
-
-                </div>
-                <div class="row">
-                    <div class="width-1">
-                        <input type="checkbox">Finished
-                    </div>
-                    <textarea class="width-2 textarea textarea-list" rows="5" disabled></textarea>
-                    <button type="button" class="width-1 button">Edit</button>
+                <div class="notes" id="notes">
                 </div>
             </main>
         </div>
     </div>
-</body>
 
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/moment.js"></script>
+    <script type="module" src="js/index.js"></script>
+
+    <script id="notes-list-template" type="text/x-handlebars-template">
+        {{#each notes}}
+        <div class="note">
+            <div class="row">
+                <div class="width-1">{{dueBy}}</div>
+                <div class="width-2">{{title}}</div>
+                <div class="width-1">Importance {{importance}}</div>
+            </div>
+            <div class="row">
+                <div class="width-1">
+                    <input type="checkbox">{{finishedAt}}
+                </div>
+                <textarea class="width-2 textarea textarea-list" rows="5" disabled>{{description}}</textarea>
+                <button name="edit" id="edit-{{_id}}" type="button" class="width-1 button">Edit</button>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+</body>
 </html>

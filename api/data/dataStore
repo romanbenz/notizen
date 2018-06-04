@@ -1,4 +1,4 @@
 {"title":"Book hotel room","description":"Amsterdam or Stockholm","importance":"5","dueBy":"","_id":"2vjc3HtaXuIVygTm","createdAt":{"$$date":1526886403801},"updatedAt":{"$$date":1526886403801}}
-{"title":"Get books from library","description":"3 books are ready for pick-up","importance":"4","dueBy":"","_id":"JLh7eBZysBGyBiEB","createdAt":{"$$date":1526887272743},"updatedAt":{"$$date":1526887272743}}
+{"title":"Get books from library","description":"3 books are ready for pick-up","importance":"3","dueBy":"06/27/2018","_id":"JLh7eBZysBGyBiEB","createdAt":{"$$date":1526887272743},"updatedAt":{"$$date":1528107268070}}
 {"title":"Buy kettle","description":"Less expansive than CHF 80","importance":"3","dueBy":"","_id":"WWyGlD9tcZqmCzis","createdAt":{"$$date":1526886279928},"updatedAt":{"$$date":1526886279928}}
-{"title":"Go to lake","description":"Do not forget beer","importance":"2","dueBy":"","_id":"mREhCpgCllg0Bt8X","createdAt":{"$$date":1526887450327},"updatedAt":{"$$date":1526887450327}}
+{"title":"Fix bike","description":"Flat tyre","importance":"4","dueBy":"07/31/2018","_id":"vNeFXtMLJJ0d0p64","createdAt":{"$$date":1528062101613},"updatedAt":{"$$date":1528107253330}}
