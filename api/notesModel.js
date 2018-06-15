@@ -5,8 +5,23 @@ const dataStore = path.resolve(__dirname, "data", "dataStore");
 
 const db = new nedb({ filename: dataStore, autoload: true , timestampData: true});
 
-const findAll = function(callback) {
-    db.find({}).sort({ createdAt: -1 }).exec(function (err, docs) {        
+const findAll = function(query, callback) {
+    let orderby = "createdAt";
+    if(query.orderby) {
+        orderby = query.orderby;
+    } 
+
+    let direction = 1;
+    if(query.direction) {
+        if(query.direction === "ASC") {
+            direction = 1;
+        } else {
+            direction = -1;
+        }
+    } 
+
+    const sortpattern = {[orderby]: direction};
+    db.find({}).sort(sortpattern).exec(function (err, docs) {        
         callback(docs, 200);
     });
 }

@@ -1,4 +1,8 @@
-{"title":"Book hotel room","description":"Amsterdam or Stockholm","importance":"5","dueBy":"","_id":"2vjc3HtaXuIVygTm","createdAt":{"$$date":1526886403801},"updatedAt":{"$$date":1526886403801}}
+{"title":"Book hotel room","description":"Amsterdam or Stockholm","importance":"4","dueBy":"","_id":"2vjc3HtaXuIVygTm","createdAt":{"$$date":1526886403801},"updatedAt":{"$$date":1528632247309}}
 {"title":"Get books from library","description":"3 books are ready for pick-up","importance":"3","dueBy":"06/27/2018","_id":"JLh7eBZysBGyBiEB","createdAt":{"$$date":1526887272743},"updatedAt":{"$$date":1528107268070}}
+{"title":"Update all computers","description":"","importance":"1","dueBy":"06/10/2018","_id":"PxAwczOlm74KkmDZ","createdAt":{"$$date":1528632335825},"updatedAt":{"$$date":1528632992355}}
 {"title":"Buy kettle","description":"Less expansive than CHF 80","importance":"3","dueBy":"","_id":"WWyGlD9tcZqmCzis","createdAt":{"$$date":1526886279928},"updatedAt":{"$$date":1526886279928}}
-{"title":"Fix bike","description":"Flat tyre","importance":"4","dueBy":"07/31/2018","_id":"vNeFXtMLJJ0d0p64","createdAt":{"$$date":1528062101613},"updatedAt":{"$$date":1528107253330}}
+{"title":"Missing title","description":"","importance":"1","dueBy":"","_id":"YFY0zn2oCLh7rMiC","createdAt":{"$$date":1528632913338},"updatedAt":{"$$date":1528632913338}}
+{"title":"Buy sneakers","description":"","importance":"1","dueBy":"06/12/2018","_id":"n4HH61Wuhcj3v7Wo","createdAt":{"$$date":1528632981887},"updatedAt":{"$$date":1528633066844}}
+{"title":"Fix bike","description":"Flat tyre","importance":"5","dueBy":"07/31/2018","_id":"vNeFXtMLJJ0d0p64","createdAt":{"$$date":1528062101613},"updatedAt":{"$$date":1528632932555}}
+{"title":"Missing title","description":"","importance":"1","dueBy":"","_id":"yE3AXZq8rqbLVQf7","createdAt":{"$$date":1529073128703},"updatedAt":{"$$date":1529073128703}}

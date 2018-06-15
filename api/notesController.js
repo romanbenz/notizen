@@ -1,12 +1,10 @@
 const notesModel = require('./notesModel');
 
 const index = function (request, response) {
-
     const sendJson = function (docs, status) {
         response.status(status).json(docs);
     }
-
-    notesModel.findAll(sendJson);
+    notesModel.findAll(request.query, sendJson);
 };
 
 const show = function (request, response) {
