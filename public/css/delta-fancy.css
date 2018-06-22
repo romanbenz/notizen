@@ -1,0 +1,10 @@
+.button {
+    background-color: orange;
+    border: none;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.note:nth-of-type(2n-1), #note {
+    background-color: aquamarine;
+}

@@ -1,25 +1,73 @@
-$(function () {
-    $("#dueBy").datepicker();
+import {
+    NotesCollection
+} from "./notes-collection.js";
+
+const templateSource = $("#notes-list-template").html();
+const template = Handlebars.compile(templateSource);
+Handlebars.registerHelper("renderImportance", function (position, importance) {
+    if (Number(position) === Number(importance)) {
+        return "selected";
+    } else {
+        return "";
+    }
 });
+
+$("#css-switcher").attr({
+    href: 'css/' + localStorage.getItem("style-selector") + '.css'
+});
+
+const nc = new NotesCollection();
 
 const id = sessionStorage.getItem("note-id") || null;
 
 if (id) {
-    $.get("api/notes/" + id, function (data) {
-        $("#id").val(data._id);
-        $("#title").val(data.title);
-        $("#description").val(data.description);
-        $("#importance").val(data.importance);
-        $("#dueBy").val(data.dueBy);
+    nc.getNoteById(id).then(function (note) {
+        renderNotes(note);
+    });
+} else {
+    renderNotes();
+}
+
+$("#notes").on("click", function () {
+    if (String(event.target.id) === "submit") {
+        //console.log($("#note").serializeArray());
+        if ($("#_id").val()) {
+            nc.updateNote(
+                $("#_id").val(),
+                $("#title").val(),
+                $("#description").val(),
+                $("#importance").val(),
+                $("#dueBy").val(),
+                //$("#finishedAt").val()
+            ).then(function() {
+                window.location.replace("index.html");
+            });
+        } else {
+            nc.newNote(
+                $("#title").val(),
+                $("#description").val(),
+                $("#importance").val(),
+                $("#dueBy").val(),
+                //$("#finishedAt").val()
+            ).then(function() {
+                window.location.replace("index.html");
+            });
+        }
+    }
+    if (String(event.target.id) === "reset") {
+        window.location.replace("index.html");
+    }
+
+});
+
+function renderNotes(notes) {
+
+    const html = template(notes);
+
+    $("#notes").children().remove();
+    $("#notes").append(html);
+
+    $("#dueBy").datepicker({
+        dateFormat: $.datepicker.ISO_8601
     });
 }
-$("#submit").on("click", function () {
-    $.post("api/notes", $("#note").serialize(), function (data) {
-
-        const notes = JSON.parse(sessionStorage.getItem("notes")) || [];
-        notes.push(data);
-        sessionStorage.setItem("notes", JSON.stringify(notes));
-        window.location.replace("index.html");
-
-    });
-});

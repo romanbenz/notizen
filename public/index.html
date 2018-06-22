@@ -4,6 +4,7 @@
 <head>
     <title>Notes</title>
     <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/delta-default.css" id='css-switcher'>
 </head>
 
 <body>
@@ -14,9 +15,9 @@
                     <div class="row">
                         <button type="button" class="width-1 button" id="new-note">Create new note</button>
                         <div class="auto-width"></div>
-                        <select class="width-1">
-                            <option value="default">Default</option>
-                            <option value="fancy">Fancy</option>
+                        <select class="width-1" id="style-selector">
+                            <option value="delta-default">Default</option>
+                            <option value="delta-fancy">Fancy</option>
                         </select>
                     </div>
                     <div class="row">
@@ -32,9 +33,9 @@
         </div>
     </div>
 
-    <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/moment.js"></script>
+    <script src="js/utils/handlebars-v4.0.11.js"></script>
+    <script src="js/utils/jquery-3.3.1.js"></script>
+    <script src="js/utils/moment.js"></script>
     <script type="module" src="js/index.js"></script>
 <!--<script src="js/service.js"></script>-->
 
@@ -42,13 +43,13 @@
         {{#each notes}}
         <div class="note">
             <div class="row">
-                <div class="width-1">{{dueBy}}</div>
+                <div class="width-1">{{getDueByFromNow}}</div>
                 <div class="width-2">{{title}}</div>
-                <div class="width-1">Importance {{importance}}</div>
+                <div class="width-1">Importance {{renderImportance importance}}</div>
             </div>
             <div class="row">
                 <div class="width-1">
-                    <input type="checkbox">{{finishedAt}}
+                    <input name="finished" id="finished-{{_id}}" type="checkbox" {{checkFinished finishedAt}}>Finished <span id="finished-label-{{_id}}">{{getFinishedAtFromNow}}</span>
                 </div>
                 <textarea class="width-2 textarea textarea-list" rows="5" disabled>{{description}}</textarea>
                 <button name="edit" id="edit-{{_id}}" type="button" class="width-1 button">Edit</button>

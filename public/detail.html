@@ -4,50 +4,57 @@
 <head>
     <title>Notes</title>
     <link rel="stylesheet" href="css/default.css">
-    <link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="css/delta-default.css" id='css-switcher'>
+    <link rel="stylesheet" href="js/utils/jquery-ui-1.12.1/jquery-ui.css">
 </head>
 
 <body>
     <div class="page-wrapper">
         <div class="main-wrapper">
             <main class="main-content">
-                <form id="note" name="note">
-                    <input type="hidden" id="id" name="_id">
-                    <div class="row-detail">
-                        <label for="title" class="width-1">Title</label>
-                        <input type="text" id="title" name="title" class="width-3 input-text">
-                    </div>
-                    <div class="row-detail">
-                        <label for="description" class="width-1">Description</label>
-                        <textarea id="description" name="description" class="width-3 textarea" rows="5"></textarea>
-                    </div>
-                    <div class="row-detail">
-                        <label for="importance" class="width-1">Importance</label>
-                        <select id="importance" name="importance" class="width-1">
-                            <option value="1">*</option>
-                            <option value="2">**</option>
-                            <option value="3">***</option>
-                            <option value="4">****</option>
-                            <option value="5">*****</option>
-                        </select>
-                    </div>
-                    <div class="row-detail">
-                        <label for="dueBy" class="width-1">Due by</label>
-                        <input type="text" id="dueBy" name="dueBy" class="width-1 input-text">
-                    </div>
-                    <div class="row-detail">
-                        <button id="reset" name="reset" type="button" class="width-1 button">Reset</button>
-                        <button id="submit" name="submit" type="button" class="width-3 button">Submit</button>
-                    </div>
-                </form>
+                <div class="notes" id="notes">
+                </div>
             </main>
         </div>
     </div>
 
-    <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/jquery-3.3.1.js"></script>
-    <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="js/utils/handlebars-v4.0.11.js"></script>
+    <script src="js/utils/jquery-3.3.1.js"></script>
+    <script src="js/utils/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script type="module" src="js/detail.js"></script>
+
+    <script id="notes-list-template" type="text/x-handlebars-template">
+        <form id="note" name="note">
+            <input type="hidden" id="_id" name="_id" value="{{_id}}">
+            <div class="row-detail">
+                <label for="title" class="width-1">Title</label>
+                <input type="text" id="title" name="title" class="width-3 input-text" value="{{title}}">
+            </div>
+            <div class="row-detail">
+                <label for="description" class="width-1">Description</label>
+                <textarea id="description" name="description" class="width-3 textarea" rows="5">{{description}}</textarea>
+            </div>
+            <div class="row-detail">
+                <label for="importance" class="width-1">Importance</label>
+                <select id="importance" name="importance" class="width-1">
+                    <option value="1" {{renderImportance 1 importance}}>★</option>
+                    <option value="2" {{renderImportance 2 importance}}>★★</option>
+                    <option value="3" {{renderImportance 3 importance}}>★★★</option>
+                    <option value="4" {{renderImportance 4 importance}}>★★★★</option>
+                    <option value="5" {{renderImportance 5 importance}}>★★★★★</option>
+                </select>
+            </div>
+            <div class="row-detail">
+                <label for="dueBy" class="width-1">Due by</label>
+                <input type="text" id="dueBy" name="dueBy" class="width-1 input-text" value="{{dueBy}}">
+            </div>
+            <div class="row-detail">
+                <button id="reset" name="reset" type="button" class="width-1 button">Reset</button>
+                <button id="submit" name="submit" type="button" class="width-3 button">Submit</button>
+            </div>
+        </form>
+    </script>
+
 </body>
 
 </html>
