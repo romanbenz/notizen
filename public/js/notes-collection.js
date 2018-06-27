@@ -4,16 +4,6 @@ import {
 
 class Note {
 
-    /* constructor(note) {
-        this._id = note._id;
-        this.title = note.title;
-        this.description = note.description;
-        this.importance = note.importance;
-        this.dueBy = note.dueBy;
-        this.finishedAt = new Date(note.finishedAt);
-        this.createdAt = note.createdAt;
-        this.updatedAt = note.updatedAt;
-    } */
     constructor(_id, title, description, importance, dueBy, finishedAt, createdAt, updatedAt) {
         this._id = _id;
         this.title = title;
@@ -60,52 +50,38 @@ class NotesCollection {
 
     async newNote(title, description, importance, dueBy) {
         const ns = new NoteService();
-        // return await ns.newNote(new Note(this.objectifyFormArray(note))).then(function (x)
         return await ns.newNote({
             title: title,
             description: description,
             importance: importance,
             dueBy: dueBy
-        }).then(function() {
+        }).then(function () {
             return;
         });
     }
 
     async updateNote(_id, title, description, importance, dueBy) {
         const ns = new NoteService();
-        //         return await ns.updateNote(id, new Note(this.objectifyFormArray(note))).then(function (x)
+
         return await ns.updateNote(_id, {
             title: title,
             description: description,
             importance: importance,
             dueBy: dueBy
-        }).then(function() {
+        }).then(function () {
             return;
         });
     }
 
     async toggleFinishedAt(_id, finishedAt) {
         const ns = new NoteService();
-        //         return await ns.updateNote(id, new Note(this.objectifyFormArray(note))).then(function (x)
 
         return await ns.updateNote(_id, {
             finishedAt: finishedAt
         }).then(function (note) {
-            console.log(note);
             return note;
         });
     }
-
-    /* objectifyFormArray(formArray) { //TODO: Methode verbessern
-
-        var returnArray = {};
-        for (var i = 0; i < formArray.length; i++) {
-            returnArray[formArray[i]['name']] = formArray[i]['value'];
-        }
-
-        return returnArray;
-    } */
-
 }
 
 export {

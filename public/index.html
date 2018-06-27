@@ -24,7 +24,7 @@
                         <button type="button" class="width-1 button" id="sort-by-due-date">By finish date</button>
                         <button type="button" class="width-1 button" id="sort-by-created-date">By created date</button>
                         <button type="button" class="width-1 button" id="sort-by-importance">By importance</button>
-                        <button type="button" class="width-1 button">Show finished</button>
+                        <button type="button" class="width-1 button" id="filter-by-finished">Show finished</button>
                     </div>
                 </div>
                 <div class="notes" id="notes">
@@ -37,7 +37,6 @@
     <script src="js/utils/jquery-3.3.1.js"></script>
     <script src="js/utils/moment.js"></script>
     <script type="module" src="js/index.js"></script>
-<!--<script src="js/service.js"></script>-->
 
     <script id="notes-list-template" type="text/x-handlebars-template">
         {{#each notes}}
@@ -49,7 +48,7 @@
             </div>
             <div class="row">
                 <div class="width-1">
-                    <input name="finished" id="finished-{{_id}}" type="checkbox" {{checkFinished finishedAt}}>Finished <span id="finished-label-{{_id}}">{{getFinishedAtFromNow}}</span>
+                    <input name="finished" id="finished-{{_id}}" type="checkbox" {{checkFinished finishedAt}}>Finished {{getFinishedAtFromNow}}
                 </div>
                 <textarea class="width-2 textarea textarea-list" rows="5" disabled>{{description}}</textarea>
                 <button name="edit" id="edit-{{_id}}" type="button" class="width-1 button">Edit</button>
